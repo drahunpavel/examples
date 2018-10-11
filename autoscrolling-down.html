@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Example</title>
+	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+	<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+	<link href="autoscrolling-down.css" rel="stylesheet">
+</head>
+
+<body>
+	<div id="container"></div>
+	<script type="text/babel">
+
+const style = {
+  borderWidth: "2px",
+  borderStyle: "solid",
+  padding: "10px",
+  fontSize: "24px"
+};
+
+class Example extends React.Component {
+
+
+	// state={
+	// 	text:'',
+	// }
+
+	// onChange=(EO)=>{
+	// 	console.log(EO.target.value)
+	// 	this.setState({
+    //   	text: EO.target.value
+    // })
+	//}
+
+	componentDidMount(){
+		this.refs.main.scrollTop=90000;
+	}
+
+	render() {
+		return(
+
+		// <textarea
+        // 	className="ActiveChatFooterInput"
+        // 	type="text"
+		// 	placeholder="Напишите что-нибудь"
+		//   	onChange={this.onChange}
+		// 	value={this.state.text}
+		// />
+
+		<div 
+		className="style"
+		ref="main"
+		>
+			ddd
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			dfdfdf
+			</div>
+		)}
+}
+
+ReactDOM.render(
+	<Example />,
+	document.getElementById('container')
+);
+	</script>
+</body>
+
+</html>
