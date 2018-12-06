@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title></title>
+		<style>
+			.modal{
+				background-color: rgba(27, 39, 51, 0.5);
+				height: 3000px;
+			}
+			.ModalWindowOpened {
+			
+				position: fixed !important;
+				height: 100% !important;
+				width: 100% !important;
+			
+			}
+			
+		</style>
+	</head>
+<script>
+    //Скрытие скролла на всех устройствах.
+	let scrollPositionBeforeHide = 0;
+	let elementHTML = document.querySelector('html');
+	function hideScroll(needHide) {
+		console.log(needHide);
+		if(needHide) {
+			scrollPositionBeforeHide = window.pageYOffset;
+			elementHTML.style.top = '-' + scrollPositionBeforeHide + 'px';
+			elementHTML.classList.add('ModalWindowOpened');
+			return;
+		}
+		elementHTML.classList.remove('ModalWindowOpened');
+		elementHTML.style.top = '';
+		scrollPositionBeforeHide && window.scrollTo(0, scrollPositionBeforeHide);
+		scrollPositionBeforeHide = 0;
+	}
+</script>
+<body>
+<div class="modal">
+	<input type="button" value="scroll on" onclick="hideScroll(false)"/>
+	<input type="button" value="scroll off" onclick="hideScroll(true)"/>
+</div>
+
+
+			
+</body>
+</html>

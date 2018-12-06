@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>SMiles in div</title>
+	<script crossorigin src="https://unpkg.com/react@16.6.0/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+	<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+	<style>
+
+	</style>
+
+</head>
+
+<body>
+	<div id="container"></div>
+	<script type="text/babel">
+
+
+
+
+	class TextField extends React.Component {
+
+
+		state={
+			elapsed:0,
+		}
+
+		tick=()=>{
+			console.log("прошла секунда")
+			this.setState({
+				elapsed: new Date() - this.props.start
+			});
+		}
+
+		format=(sec)=>{
+			        // Calculate elapsed to tenth of a second:
+							var elapsed = Math.round(sec / 100);
+							// This will give a number with one digit after the decimal dot (xx.x):
+							var seconds = (elapsed / 10).toFixed(1);  
+							return seconds;
+		}
+
+    componentDidMount() {   
+			//let start=Date.now();
+			let	timer = setInterval(this.tick, 1000);
+    }
+    componentWillUnmount(){
+			clearInterval(timer)
+		}
+
+		render(){
+			return (
+				<div>
+					<p>This example was started <b>{this.format(this.state.elapsed)} seconds</b> ago.</p>
+
+				</div>
+			)
+		}
+	}
+	////////////////App Js
+		ReactDOM.render(
+			<TextField start={Date.now()} />
+			,document.getElementById('container')
+		);
+	</script>
+</body>
+
+</html>

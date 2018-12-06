@@ -14,17 +14,18 @@ function doGetCaretPosition (ctrl) {
  
 		ctrl.focus ();
 		var Sel = document.selection.createRange ();
- 
+		console.log("---------")
+		console.log(Sel)
 		Sel.moveStart ('character', -ctrl.value.length);
- 
+		console.log(Sel.moveStart ('character', -ctrl.value.length))
 		CaretPos = Sel.text.length;
+		console.log(CaretPos)
 	}
 	// Firefox support
 	else if (ctrl.selectionStart || ctrl.selectionStart == '0')
 		CaretPos = ctrl.selectionStart;
 	console.log("Полученная позиция",CaretPos)
 	return (CaretPos);
- 
 }
  
  
@@ -135,7 +136,7 @@ function process()
 		</script>
 	</head>
 	<body>
-		<div contentEditable="true" id="get" name="get" rows="5" cols="31">Please write some integer in the textbox given below and press "Set Position" button. Press "Get Position" button to get the position of cursor.</div>
+		<textarea id="get" name="get" rows="5" cols="31">Please write some integer in the textbox given below and press "Set Position" button. Press "Get Position" button to get the position of cursor.</textarea>
 		<br>
  
 		Enter Caret Position: <input type="text" id="no" size="1" /><input type="button" onclick="process();" value="Set Position">

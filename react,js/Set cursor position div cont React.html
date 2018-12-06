@@ -1,0 +1,246 @@
+<html>
+	<head>
+<title>Set cursor position to 25 chars in DIV</title>
+		<script>
+function createRange(node, chars, range) {
+    if (!range) {
+        range = document.createRange()
+        range.selectNode(node);
+        range.setStart(node, 0);
+    }
+
+    if (chars.count === 0) {
+        range.setEnd(node, chars.count);
+    } else if (node && chars.count >0) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            if (node.textContent.length < chars.count) {
+                chars.count -= node.textContent.length;
+            } else {
+                 range.setEnd(node, chars.count);
+                 chars.count = 0;
+            }<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>SMiles in div</title>
+    <script crossorigin src="https://unpkg.com/react@16.6.0/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <link rel="stylesheet" href="./css/emojiCopy.css" />
+    <link rel="stylesheet" href="./css/smilesCopy.css" />
+
+</head>
+
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+
+	class FieldText extends React.Component {
+
+		state = {
+            text: '',
+            img:null,
+        }
+
+        
+
+
+createRange=(node, chars, range)=> {
+    if (!range) {
+        range = document.createRange()
+        range.selectNode(node);
+        range.setStart(node, 0);
+    }
+
+    if (chars.count === 0) {
+        range.setEnd(node, chars.count);
+    } else if (node && chars.count >0) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            if (node.textContent.length < chars.count) {
+                chars.count -= node.textContent.length;
+            } else {
+                 range.setEnd(node, chars.count);
+                 chars.count = 0;
+            }
+        } else {
+            for (var lp = 0; lp < node.childNodes.length; lp++) {
+                range = this.createRange(node.childNodes[lp], chars, range);
+
+                if (chars.count === 0) {
+                   break;
+                }
+            }
+        }
+   } 
+
+   return range;
+};
+
+setCurrentCursorPosition=(chars)=>{
+    if (chars >= 0) {
+        var selection = window.getSelection();
+        console.log(selection)
+        console.log(document.getElementById("contenteditablediv"))
+        
+       let range = this.createRange(document.getElementById("contenteditablediv").parentNode, { count: chars });
+
+        if (range) {
+            range.collapse(false);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    }
+};
+
+
+
+
+		render() {
+			return (
+                <div   
+                    ref={(node)=>{this.inputElementContainer=node}}
+                    className="KEmoji_Block" 
+                    style={{width:400+"px", height:200+"px"}}
+                    >
+                    
+                    
+                    <div id="contenteditablediv"  ref={(node)=>{this.inputElement=node}}  contentEditable="true" tabIndex="1" onInput={this.change} ></div>
+                    
+
+                    <button onClick={()=>{this.setCurrentCursorPosition(1)}}>HZ</button>
+
+                    <div ref={(node)=>{this.smilesContainerElement=node}} className="KEmoji_Cont KEmoji_Cont_Hidden" tabIndex="-1" readOnly="readOnly" unselectable="on" style={{height:250+"px",display: "block"}}>
+                        <div style={{height:250+"px",width:400+"px"}}>
+                            <div className="KEmoji_Smile" emoji="D83DDE0A"><div><i title="D83DDE0A" className="ke ke-D83DDE0A"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE03"><div><i title="D83DDE03" className="ke ke-D83DDE03"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE09"><div><i title="D83DDE09" className="ke ke-D83DDE09"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE06"><div><i title="D83DDE06" className="ke ke-D83DDE06"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE1C"><div><i title="D83DDE1C" className="ke ke-D83DDE1C"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE0B"><div><i title="D83DDE0B" className="ke ke-D83DDE0B"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE0D"><div><i title="D83DDE0D" className="ke ke-D83DDE0D"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE0E"><div><i title="D83DDE0E" className="ke ke-D83DDE0E"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE12"><div><i title="D83DDE0A" className="ke ke-D83DDE12"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE0F"><div><i title="D83DDE0A" className="ke ke-D83DDE0F"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE14"><div><i title="D83DDE0A" className="ke ke-D83DDE14"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE22"><div><i title="D83DDE0A" className="ke ke-D83DDE22"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE2D"><div><i title="D83DDE0A" className="ke ke-D83DDE2D"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE29"><div><i title="D83DDE0A" className="ke ke-D83DDE29"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE28"><div><i title="D83DDE0A" className="ke ke-D83DDE28"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE10"><div><i title="D83DDE0A" className="ke ke-D83DDE10"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE0C"><div><i title="D83DDE0A" className="ke ke-D83DDE0C"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE04"><div><i title="D83DDE0A" className="ke ke-D83DDE04"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE07"><div><i title="D83DDE0A" className="ke ke-D83DDE07"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE30"><div><i title="D83DDE0A" className="ke ke-D83DDE30"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE32"><div><i title="D83DDE0A" className="ke ke-D83DDE32"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE33"><div><i title="D83DDE0A" className="ke ke-D83DDE33"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE37"><div><i title="D83DDE0A" className="ke ke-D83DDE37"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE02"><div><i title="D83DDE0A" className="ke ke-D83DDE02"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="2764"><div><i title="D83DDE0A" className="ke ke-2764"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE1A"><div><i title="D83DDE0A" className="ke ke-D83DDE1A"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE15"><div><i title="D83DDE0A" className="ke ke-D83DDE15"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE2F"><div><i title="D83DDE0A" className="ke ke-D83DDE2F"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE26"><div><i title="D83DDE0A" className="ke ke-D83DDE26"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE35"><div><i title="D83DDE0A" className="ke ke-D83DDE35"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE20"><div><i title="D83DDE0A" className="ke ke-D83DDE20"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE21"><div><i title="D83DDE0A" className="ke ke-D83DDE21"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE1D"><div><i title="D83DDE0A" className="ke ke-D83DDE1D"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE34"><div><i title="D83DDE0A" className="ke ke-D83DDE34"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE18"><div><i title="D83DDE0A" className="ke ke-D83DDE18"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE1F"><div><i title="D83DDE0A" className="ke ke-D83DDE1F"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE2C"><div><i title="D83DDE0A" className="ke ke-D83DDE2C"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE36"><div><i title="D83DDE0A" className="ke ke-D83DDE36"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE2A"><div><i title="D83DDE0A" className="ke ke-D83DDE2A"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE2B"><div><i title="D83DDE0A" className="ke ke-D83DDE2B"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="263A"><div><i title="D83DDE0A" className="ke ke-263A"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE00"><div><i title="D83DDE0A" className="ke ke-D83DDE00"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE25"><div><i title="D83DDE0A" className="ke ke-D83DDE25"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE1B"><div><i title="D83DDE0A" className="ke ke-D83DDE1B"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE16"><div><i title="D83DDE0A" className="ke ke-D83DDE16"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE24"><div><i title="D83DDE0A" className="ke ke-D83DDE24"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE23"><div><i title="D83DDE0A" className="ke ke-D83DDE23"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE27"><div><i title="D83DDE0A" className="ke ke-D83DDE27"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE11"><div><i title="D83DDE0A" className="ke ke-D83DDE11"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE05"><div><i title="D83DDE0A" className="ke ke-D83DDE05"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE2E"><div><i title="D83DDE0A" className="ke ke-D83DDE2E"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE1E"><div><i title="D83DDE0A" className="ke ke-D83DDE1E"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE19"><div><i title="D83DDE0A" className="ke ke-D83DDE19"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE13"><div><i title="D83DDE0A" className="ke ke-D83DDE13"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE01"><div><i title="D83DDE0A" className="ke ke-D83DDE01"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE31"><div><i title="D83DDE0A" className="ke ke-D83DDE31"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE08"><div><i title="D83DDE0A" className="ke ke-D83DDE08"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDC7F"><div><i title="D83DDE0A" className="ke ke-D83DDC7F"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDC7D"><div><i title="D83DDE0A" className="ke ke-D83DDC7D"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDC4D"><div><i title="D83DDE0A" className="ke ke-D83DDC4D"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDC4E"><div><i title="D83DDE0A" className="ke ke-D83DDC4E"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="261D"><div><i title="D83DDE0A" className="ke ke-261D"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="270C"><div><i title="D83DDE0A" className="ke ke-270C"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDC4C"><div><i title="D83DDE0A" className="ke ke-D83DDC4C"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDC4F"><div><i title="D83DDE0A" className="ke ke-D83DDC4F"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDC4A"><div><i title="D83DDE0A" className="ke ke-D83DDC4A"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="270B"><div><i title="D83DDE0A" className="ke ke-270B"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDE4F"><div><i title="D83DDE0A" className="ke ke-D83DDE4F"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDC43"><div><i title="D83DDE0A" className="ke ke-D83DDC43"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDC46"><div><i title="D83DDE0A" className="ke ke-D83DDC46"></i></div></div>
+                            <div className="KEmoji_Smile" emoji="D83DDC47"><div><i title="D83DDE0A" className="ke ke-D83DDC47"></i></div></div>
+                    
+                        </div>
+                    </div>
+                    
+                </div>
+
+			)
+		}
+	}
+	////////////////App Js
+		ReactDOM.render(
+			<FieldText/>
+			,document.getElementById('container')
+		);
+	</script>
+</body>
+
+</html>
+        } else {
+            for (var lp = 0; lp < node.childNodes.length; lp++) {
+                range = createRange(node.childNodes[lp], chars, range);
+
+                if (chars.count === 0) {
+                   break;
+                }
+            }
+        }
+   } 
+
+   return range;
+};
+
+function setCurrentCursorPosition(chars) {
+    if (chars >= 0) {
+        var selection = window.getSelection();
+
+        range = createRange(document.getElementById("test").parentNode, { count: chars });
+
+        if (range) {
+            range.collapse(false);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    }
+};
+
+
+//погрещность 3 знака
+function Click(){
+	setCurrentCursorPosition(5);
+}
+
+		</script>
+	</head>
+	<body>
+		<div id="test" contenteditable="true" autocomplete="off" autocorrect="off" autocapiatlise="off" spellcheck="false" style="padding: 5px 5px; border: 1px solid black;">This is a test <span style="color: blue">and this is blue</span> and this is back to black</div>
+		<br />
+		<button onclick="Click()" id="btn" type="button">Set cursor position to 5 chars in</button>
+	</body>
+</html>

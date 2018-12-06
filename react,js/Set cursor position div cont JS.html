@@ -1,0 +1,63 @@
+<html>
+	<head>
+<title>Set cursor position to 25 chars in DIV</title>
+		<script>
+function createRange(node, chars, range) {
+    if (!range) {
+        range = document.createRange()
+        range.selectNode(node);
+        range.setStart(node, 0);
+    }
+
+    if (chars.count === 0) {
+        range.setEnd(node, chars.count);
+    } else if (node && chars.count >0) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            if (node.textContent.length < chars.count) {
+                chars.count -= node.textContent.length;
+            } else {
+                 range.setEnd(node, chars.count);
+                 chars.count = 0;
+            }
+        } else {
+            for (var lp = 0; lp < node.childNodes.length; lp++) {
+                range = createRange(node.childNodes[lp], chars, range);
+
+                if (chars.count === 0) {
+                   break;
+                }
+            }
+        }
+   } 
+
+   return range;
+};
+
+function setCurrentCursorPosition(chars) {
+    if (chars >= 0) {
+        var selection = window.getSelection();
+
+        range = createRange(document.getElementById("test").parentNode, { count: chars });
+
+        if (range) {
+            range.collapse(false);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    }
+};
+
+
+//погрещность 3 знака
+function Click(){
+	setCurrentCursorPosition(5);
+}
+
+		</script>
+	</head>
+	<body>
+		<div id="test" contenteditable="true" autocomplete="off" autocorrect="off" autocapiatlise="off" spellcheck="false" style="padding: 5px 5px; border: 1px solid black;">This is a test <span style="color: blue">and this is blue</span> and this is back to black</div>
+		<br />
+		<button onclick="Click()" id="btn" type="button">Set cursor position to 5 chars in</button>
+	</body>
+</html>
