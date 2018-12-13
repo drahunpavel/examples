@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<script crossorigin src="https://unpkg.com/react@16.5.2/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16.5.2/umd/react-dom.production.min.js"></script>
+	<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+	
+</head>
+<body>
+	<div id="container"></div> 
+	<script type="text/babel">
+	class Parrent extends React.Component {
+		state={
+			isRun:true,
+		}
+		myTimer = null;
+
+		run=()=>{
+			this.myTimer = setTimeout(() => {
+				console.log('--')
+				if(this._ismounted&&this.state.isRun){
+					this.run();
+				}
+			},1000);
+		}
+
+
+		//warning fix
+	    //создаем переменную  при маунте
+	    //удаляем её при анмаунте
+	    //таким образом при проверке этой переменной можно узнать существует ли наш компонент
+		componentDidMount() { 
+			this._ismounted = true;
+		}
+		//чистим таймаут
+		componentWillUnmount(){
+			clearTimeout(this.myTimer);
+			this._ismounted = false;
+		}
+		render() {
+			return (<div>
+						<div onClick={this.run}>
+							run
+						</div>
+						<div onClick={()=>{this.setState({isRun:false})}}>
+							stop
+						</div>
+					</div>
+			)
+		}
+	}
+	////////////////App Js
+		ReactDOM.render(
+			<Parrent/>
+			,document.getElementById('container')
+		);
+	</script>
+</body> 
+</html>
