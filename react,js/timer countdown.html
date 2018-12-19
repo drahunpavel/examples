@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>timer countdown</title>
+    <script>
+        var startTime = new Date();
+        setInterval(function () {
+            var curTime = new Date();
+            var delta = curTime.getTime() - startTime.getTime();
+            if (delta > 20000) {
+                console.log('20 seconds expired');
+                startTime = new Date();
+            } else
+                document.getElementById('content').innerText = (20 - delta / 1000).toFixed(2);
+        }, 50);
+    </script>
+</head>
+
+<body>
+    <div id="content"> </div>
+
+</body>
+
+</html>
