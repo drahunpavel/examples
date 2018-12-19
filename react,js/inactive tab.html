@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>timer countdown</title>
+    <script>
+
+
+
+let win=true;
+
+window.onfocus = function(){ 
+    win = true; //пользователь на вкладке сайте
+} 
+window.onblur = function(){ 
+    win = false; //пользователь закрыл вкладку или переключил на другую
+} 
+
+let show = ['Новое сообщение', window.document.title];
+
+let i=0;
+setInterval(function(){
+    if(win){return}; //если активная вкладка, ничего не делаем
+    console.log(i++ % 2)
+    console.log(show[i++ % 2])
+    window.document.title = show[i++ % 2];
+},1000);
+
+    </script>
+</head>
+
+<body>
+    <div id="content"> </div>
+
+</body>
+
+</html>
