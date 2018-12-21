@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Программное создание URI — правильно</title>
+  <script>
+    "use strict";
+
+    // Метод 1. Установка location.href
+    function gotoURI1(url) {
+      location.href = url;
+    }
+
+
+    // Метод 2. click ссылки
+    function gotoURI2(url) {
+        var hrefObj=document.getElementById('IGoto');
+        hrefObj.href=url;
+        hrefObj.click();
+    }   
+
+
+    // Метод 3. submit формы
+    function gotoURI3(url) {
+        var formObj=document.forms.FGoto;
+        formObj.action=url;
+        formObj.submit();
+    }
+
+  </script>
+</head>
+
+<body>
+
+  <input type=button value='переход методом 1' onclick='gotoURI1("http://www.tut.by")'>
+
+
+  <a id='IGoto' href='' style='display: none'></a>
+  <input type=button value='переход методом 2' onclick='gotoURI2("http://www.tut.by")'> 
+
+
+  <form name='FGoto' style='display: none'></form>
+  <input type=button value='переход методом 3' onclick='gotoURI3("http://www.tut.by")'> 
+</body>
+
+</html>

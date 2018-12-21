@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Программное создание URI — правильно</title>
+  </head>
+  <body >
+    Введите поисковую фразу: <input type='text' id='QUERY'>
+    <input type='button' value='поиск' onclick='doSearch()'>
+
+
+<script>
+
+"use strict";
+function doSearch() {
+        var queryElem=document.getElementById('QUERY');
+        var queryText=queryElem.value;
+        var queryURL= 'http://yandex.by/yandsearch?text=' + encodeURIComponent(queryText) ;
+        console.log(queryURL);
+        var newWindow=window.open(queryURL,'mywindow');
+        console.log(newWindow);
+    }
+
+</script>
+
+  </body>
+</html>

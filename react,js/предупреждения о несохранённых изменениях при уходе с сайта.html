@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Программное создание URI — правильно</title>
+
+</head>
+
+<body>
+
+    <h2>ТЕКСТОВЫЙ РЕДАКТОР</h2>
+
+    <textarea id=Txt style='width: 500px; height: 200px'>
+    вводите свой текст...
+    </textarea>
+    
+    <br><br>
+    <a href='http://www.tut.by'>Уйти куда-нибудь</a>
+    
+
+
+
+
+    <script>
+        "use strict";
+    
+        var textChanged=false;
+    
+    var txtElem=document.getElementById('Txt');
+    txtElem.onchange=txtChanged;
+    txtElem.onkeypress=txtChanged;
+    txtElem.onpaste=txtChanged;
+    txtElem.oncut=txtChanged;
+    
+
+    function txtChanged(EO) {
+      EO=EO||window.event;
+      textChanged=true; // текст изменён
+    }
+    
+    window.onbeforeunload=befUnload;
+    
+    function befUnload(EO) {
+      EO=EO||window.event;
+      // если текст изменён, попросим браузер задать вопрос пользователю
+      if ( textChanged )
+        EO.returnValue='А у вас есть несохранённые изменения!';
+    };
+    
+    
+      </script>
+</body>
+
+</html>
