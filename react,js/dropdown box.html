@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Введите телефон</title>
+<style>
+body{
+			background-color:#CADFB7; 		
+			margin: 0;
+			padding: 0;
+		}
+			#button {
+			position:absolute;
+			top:50%;
+			left:50%;
+			transform:translate(-50%, -50%);
+			background-color:#CC4D41;
+			z-index:1;
+			font-size:1.6em;
+			padding:3px 5px ;
+			text-decoration:none;
+			color:white;
+			font-family: sans-serif;
+			padding: 10px 30px;
+		}
+		#modal {
+			opacity:0;
+			background-color: white;
+			position:absolute;
+			width:40%;
+			height:300px;
+			left:50%;
+			transform:translate(-50%, -50%);
+			padding:10px;
+			z-index:-1;
+			transition:all 0.2s ease-out;
+			font-family: sans-serif;
+			text-align: center;
+		}
+		#modal > p{
+			opacity: 0;
+			margin-top: -10px;
+			font-size: 1,7em;	
+			font-family: "Raleway", sans-serif;
+			color: #CC4D41;	
+			z-index:-1;
+			transition:all 0.3s ease-out;
+
+		}
+		 #modal:target > p{
+		 opacity: 1;
+		 margin-top:70px;
+		 z-index: -1;
+		 transition-property: margin-top;
+     transition-delay: 0.3s;
+		 }
+		#modal:target {
+			opacity: 1;
+			z-index:3;
+			transform:translate(-50%, 0%) ;
+			}
+		.dark {
+			position:absolute;
+			top:0;
+			bottom:0;
+			left:0;
+			right:0;
+			z-index:-2;
+			transition:all 0.2s ease-out;
+		}
+		#modal:target + .dark {
+			background-color: rgba(0,0,0,0.8);
+		}
+</style>
+</head>
+
+<body>
+        <a href="#modal" id="button">Open dialog</a>
+        <div id="modal">
+            <p><strong>Howdy. </strong>I'm a dialog box</p>
+            <div class="overlay"></div>
+            <a class="close" href="#" id="button">Close</a>
+        </div>
+        <div class="dark"></div>
+<script>
+    "use strict";
+
+    function function1(){
+
+    }
+    function function2(){
+
+    }
+
+</script>
+</body>
+
+</html>
