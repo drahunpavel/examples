@@ -18,18 +18,28 @@
   width: 300px;
   height: 300px;
   margin: 30px auto;
-  transition: opacity 1s linear, margin-top 1s step-start, z-index 1s step-start;
-  display: block;
-  position: relative;
+  transition: opacity 1s linear;
+/*  display: block;*/
+  /*position: relative;*/
+  position: absolute;
+  visibility: visible;
 }
 
 .hidden {
-  opacity: 0;
-  margin-top: -330px;
-  z-index: -5;
-  transition-timing-function: linear, step-end, step-end;
+opacity: 0;
+  /*margin-top: -330px;*/
+/*  z-index: -5;*/
+/*visibility: hidden;*/
+transition: opacity 1s linear;
 }
 
+.nohidden {
+opacity: 1;
+  /*margin-top: -330px;*/
+/*  z-index: -5;*/
+/*visibility: visible;*/
+transition: opacity 1s linear;
+}
 button {
   display: block;
   margin: 0 auto;
@@ -42,7 +52,7 @@ button {
 
 <button id="btn" onclick="myFunction()">Try it</button>
 
-<div class="box" id="myDIV">
+<div class="box hidden" id="myDIV">
 
 </div>
 
