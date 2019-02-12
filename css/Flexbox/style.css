@@ -1,0 +1,33 @@
+.my-flex-container{
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    height: 300px;
+    border: 1px solid black;
+}
+
+.my-flex-container div{
+    min-height: 50px;
+    background: rgb(228, 198, 198);
+    margin: 2px;
+    padding: 10px;
+}
+/* ................................... */
+.my-flex-container2{
+    display: flex;
+    flex-flow: wrap;
+    align-content:stretch;
+    height: 300px;
+    border: 1px solid black;
+    
+}
+.my-flex-container2 div{
+    min-height: 50px;
+    background: rgb(228, 198, 198);
+    margin: 2px;
+    padding: 10px;
+}
+.my-flex-block2{
+    width: 100%;
+}
