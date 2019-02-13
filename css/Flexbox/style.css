@@ -19,8 +19,7 @@
     flex-flow: wrap;
     align-content:stretch;
     height: 300px;
-    border: 1px solid black;
-    
+    border: 1px solid black; 
 }
 .my-flex-container2 div{
     min-height: 50px;
@@ -30,4 +29,43 @@
 }
 .my-flex-block2{
     width: 100%;
+}
+/* ................................... */
+.my-flex-container3{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 300px;
+    border: 1px solid black; 
+}
+.my-flex-block3{
+    height: 50px;
+    width: 100px;
+    flex-basis:80px; height: 80px;
+    background: rgb(228, 198, 198);
+    margin: 20px;
+    padding: 10px;
+    align-self:center;
+    flex-grow:1; /*занимают все место в контейнере*/
+}
+.my-flex-block4{
+    height: 50px;
+    width: 100px;
+    background: rgb(228, 198, 198);
+    margin: 20px;
+    padding: 10px;
+    flex-grow:2;/*те контейнер делится на части*/
+}
+.my-flex-block5{
+    background: rgb(228, 198, 198);
+    margin: 20px;
+    padding: 10px;
+    flex:2 1 50px;
+}
+.my-flex-block6{
+    height: 50px;
+    background: rgb(228, 198, 198);
+    margin: 20px;
+    padding: 10px;
+    flex:1 2 50px; /*flex-grow, flex-shrink и flex-basis*/
 }

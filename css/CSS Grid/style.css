@@ -1,0 +1,11 @@
+.container{
+    display: grid;
+}
+
+.container .item{
+    width: 100px;
+    height: 50px;
+    background: rgb(194, 164, 164);
+    padding: 5px;
+    margin: 5px;
+}

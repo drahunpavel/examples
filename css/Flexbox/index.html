@@ -20,12 +20,28 @@
     <div class="my-flex-block">item3</div>
   </div>
 
+
+  <div class="my-flex-container3">
+    <div class="my-flex-block3">item1</div>
+    <div class="my-flex-block3">item2</div>
+    <div class="my-flex-block4">item3</div>
+    <div class="my-flex-block4">item4</div>
+  </div>
+
+  <div class="my-flex-container3">
+    <div class="my-flex-block5">item1</div>
+    <div class="my-flex-block5">item2</div>
+    <div class="my-flex-block6">item3</div>
+    <div class="my-flex-block6">item4</div>
+  </div>
+
 </body> 
 </html>
 
 
 <!--
 https://html5.by/blog/flexbox/
+https://tproger.ru/translations/how-css-flexbox-works/
 
 flex-direction – направление главной оси
 row (значение по умолчанию) : слева направо (в rtl справа налево)
@@ -73,5 +89,27 @@ stretch (значение по умолчанию): Ряды блоков рас
 
 
 CSS правила для дочерних элементов flex-контейнера (flex-блоков)
+flex-basis – базовый размер отдельно взятого flex-блока
+flex-grow – “жадность” отдельно взятого flex-блока
 
+Пример 2:
+
+Если все flex-блоки внутри flex-контейнера имеют flex-grow:3, то они будут одинакового размера
+Если один из них имеет flex-grow:12, то он будет в 4 раза больше, чем все остальные
+
+flex-shrink – фактор “сжимаемости” отдельно взятого flex-блока
+
+flex – короткая запись для свойств flex-grow, flex-shrink и flex-basis
+flex: 12 3 30em;
+
+align-self – выравнивание отдельно взятого flex-блока по поперечной оси.
+flex-start: flex-блок прижат к началу поперечной оси
+flex-end: flex-блок прижат к концу поперечной оси
+center: flex-блок располагаются в центре поперечной оси
+baseline: flex-блок выравнен по baseline
+stretch (значение по умолчанию) : flex-блок растянут, чтобы занять все доступное место по поперечной оси, при этом учитываются min-width/max-width, если таковые заданы.
+
+order – порядок следования отдельно взятого flex-блока внутри flex-контейнера.
+
+margin: auto по вертикали и горизонтали
 -->
