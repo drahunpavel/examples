@@ -1,0 +1,21 @@
+{
+  "name": "modulesapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js Tom 26"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "hbs": "^4.0.3"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.16.2"
+  }
+}
