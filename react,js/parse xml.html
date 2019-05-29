@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+var parser, xmlDoc;
+var text = "<bookstore><book>" +
+"<title>Everyday Italian</title>" +
+"<author>Giada De Laurentiis</author>" +
+"<year>2005</year>" +
+"</book></bookstore>";
+
+parser = new DOMParser();
+xmlDoc = parser.parseFromString(text,"text/xml");
+
+let z1=xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+let z2=xmlDoc.getElementsByTagName("author")[0].childNodes[0].nodeValue;
+let z3=xmlDoc.getElementsByTagName("year")[0].childNodes[0].nodeValue;
+console.log(z1,z2,z3)
+// document.getElementById("demo").innerHTML =
+// xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+</script>
+
+</body>
+</html>
