@@ -18,11 +18,24 @@ app.use(express.static('public')); //делаем папку статичной
 app.get('/', (req, res, next) => { //next продолжает выполнять другие методы
     // res.status(200) идет по умолчанию
     // res.sendFile(path.join(__dirname, 'views', 'index.html'));
-    res.render('index')
+    res.render('index', {
+        title: 'Home page',
+        isHome: true
+    })
 })
-app.get('/about.html', (req, res, next) => { //next продолжает выполнять другие методы
+app.get('/add', (req, res, next) => { //next продолжает выполнять другие методы
     // res.sendFile(path.join(__dirname, 'views', 'about.html'));
-    res.render('about')
+    res.render('add', {
+        title: 'Add',
+        isAdd: true
+    })
+})
+app.get('/courses', (req, res, next) => { //next продолжает выполнять другие методы
+    // res.sendFile(path.join(__dirname, 'views', 'about.html'));
+    res.render('courses', {
+        title: 'All',
+        isCourses: true
+    })
 })
 
 const PORT = process.env.PORT || 3000;
