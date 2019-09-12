@@ -13,6 +13,8 @@ app.engine('hbs', hbs.engine);//подключение движка к эксп�
 app.set('view engine', 'hbs') //начинаем использовать
 app.set('views', 'views')//вторая views - это папка с html
 
+app.use(express.static('public')); //делаем папку статичной
+
 app.get('/', (req, res, next) => { //next продолжает выполнять другие методы
     // res.status(200) идет по умолчанию
     // res.sendFile(path.join(__dirname, 'views', 'index.html'));
