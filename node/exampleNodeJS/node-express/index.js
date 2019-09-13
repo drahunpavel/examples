@@ -20,6 +20,8 @@ app.set('views', 'views')//вторая views - это папка с html
 
 app.use(express.static('public')); //делаем папку статичной
 
+app.use(express.urlencoded({extended: true})) //что-то для форм
+
 // app.use(homeRouter);
 // app.use(addRouter);
 // app.use(coursesRouter);
