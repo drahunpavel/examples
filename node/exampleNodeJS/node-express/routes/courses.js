@@ -1,11 +1,15 @@
 const {Router} = require('express');
-
+const Course = require('../modals/course');
 const router = Router();
 
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
+
+    const courses = await Course.getAll();
+
     res.render('courses', {
         title: 'All',
-        isCourses: true
+        isCourses: true,
+        courses
     })
 })
 
