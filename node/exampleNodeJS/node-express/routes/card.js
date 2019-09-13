@@ -4,11 +4,11 @@ const Card = require('../modals/card');
 const Course = require('../modals/course');
 
 router.post('/add', async (req, res) => { //принимаем ид продукта, который нужно добавить в корзину
-    console.log('=========', req.params.id)
+
     const course = await Course.getById(req.body.id);
     
     await Card.add(course);
-    res.redirect('/card');
+    res.redirect('/courses');
 });
 
 router.get('/', async (req, res) => {
