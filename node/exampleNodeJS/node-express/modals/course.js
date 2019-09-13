@@ -65,7 +65,7 @@ class Course {
     }
 
     static async getById(id){
-
+        console.log('ПОЛУЧИЛИ ID', id)
         const courses = await Course.getAll();//образение ко всем параметрам курса
 
         return courses.find(c => c.id === id);

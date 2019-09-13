@@ -1,12 +1,57 @@
+const path = require('path');
+const fs = require('fs'); 
+
+const p = path.join( //путь к файлу
+    path.dirname(process.mainModule.filename), //директория
+    'data',
+    'card.json'
+)
+
 class Card {
 
-add(){
+    static async add(course){
+        const card = await Card.fetch();
+        
+        //добавление курса в корзинну// или добавляю новый курс, или добавляю +1 уже к выбранному курсу
+        const idx = card.courses.findIndex( c => c.id === course.id) //находит конкретный курс в корзине
+        const condidate = card.courses[idx];
+        
+        //если condidate чему-то равен, значит такой курс уже есть
+        if(condidate){
+            condidate.count++;
+            card.courses[idx] = condidate;
+        }else{
+            console.log('-----------', course)
+            course.count = 1;
+            card.courses.push(course);
+        }
 
-};
+        //общая стоимость
+        card.price += +course.price;
 
-fetch(){
+        return new Promise((resolve, reject) => {
+            fs.writeFile(p, JSON.stringify(card), err => {
+                if(err){    
+                    reject(err)
+                }else{
+                    resolve()
+                }
+            })
+        })
+    };
 
-};
+    static async fetch(){ //получает данные из корзины
+
+        return new Promise((resolve, reject) => {
+            fs.readFile(p, 'utf-8', (err, content) => {
+                if(err){
+                    reject(err);
+                }else{
+                    resolve(JSON.parse(content))
+                }
+            })
+        })
+    };
 
 };
 
