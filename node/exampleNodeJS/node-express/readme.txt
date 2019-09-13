@@ -9,6 +9,7 @@ handlebars.js
 
 materializecss
 
+npm i uuid //бибилиотека по генерации id
 
 
 
