@@ -4,9 +4,10 @@ const exphbs = require('express-handlebars');
 const app = express(); //анадог обхекта сервера
 
 //роутеры
-const homeRouter = require('./routes/home')
-const addRouter = require('./routes/add')
-const coursesRouter = require('./routes/courses')
+const homeRouter = require('./routes/home');
+const addRouter = require('./routes/add');
+const coursesRouter = require('./routes/courses');
+const cardRouter = require('./routes/card');
 
 //конфигураиця exphbs
 const hbs = exphbs.create({
@@ -28,7 +29,7 @@ app.use(express.urlencoded({extended: true})) //что-то для форм
 app.use('/',homeRouter);
 app.use('/add',addRouter);
 app.use('/courses',coursesRouter);
-
+app.use('/card', cardRouter);
 
 const PORT = process.env.PORT || 3000;
 

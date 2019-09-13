@@ -28,6 +28,7 @@ router.get('/:id/edit', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
+    // console.log('--', req.params)
     const course = await Course.getById(req.params.id)
     res.render('course', {
         layout: 'empty',
@@ -37,8 +38,6 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/edit', async (req, res) => {
-
-
     await Course.update(req.body); //передаем на апдейт нужный курс
     res.redirect('/courses');
 })
