@@ -19,7 +19,7 @@ app.engine('hbs', hbs.engine);//подключение движка к эксп�
 app.set('view engine', 'hbs') //начинаем использовать
 app.set('views', 'views')//вторая views - это папка с html
 
-app.use(express.static('public')); //делаем папку статичной
+app.use(express.static(path.join(__dirname, 'public'))); //делаем папку статичной
 
 app.use(express.urlencoded({extended: true})) //что-то для форм
 

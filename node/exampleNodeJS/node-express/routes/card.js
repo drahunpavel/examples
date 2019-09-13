@@ -22,4 +22,12 @@ router.get('/', async (req, res) => {
     })
 });
 
+//! метод удаления
+
+router.delete('/remove/:id', async (req, res) => {
+    const card = await Card.remove(req.params.id) //params - потому что хранится ид в адресной строке
+
+    res.status(200).json(card);
+})
+
 module.exports = router;
