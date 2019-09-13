@@ -70,6 +70,29 @@ class Course {
 
         return courses.find(c => c.id === id);
     };
+
+    static async update(course){
+        console.log('получи', course)
+        const courses = await Course.getAll();//образение ко всем параметрам курса
+
+        const idx = courses.findIndex(c => c.id === course.id);
+
+        courses[idx] = course;
+
+        return new Promise((resolve, reject) => {
+            fs.writeFile(
+                path.join(__dirname, '..', 'data', 'courses.json'),
+                JSON.stringify(courses),
+                (err, content) => {
+                    if(err){
+                        reject(err)
+                    }else{
+                        resolve()
+                    };
+                }
+            )
+        })
+    }
 };
 
 module.exports = Course;
