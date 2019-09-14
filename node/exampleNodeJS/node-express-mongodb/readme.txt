@@ -13,7 +13,7 @@ npm i uuid //бибилиотека по генерации id
 
 
 ============================mongo
-
+npm i mongoose --save
 
 
 

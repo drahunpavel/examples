@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const app = express(); //анадог обхекта сервера
+const mongoose = require('mongoose');
 
 //роутеры
 const homeRouter = require('./routes/home');
@@ -38,6 +39,22 @@ const user = 'Admin';
 const url = 'mongodb+srv://Admin:<p4pdesz2vd3tb9tL>@cluster0-gk8xa.mongodb.net/test?retryWrites=true&w=majority'
 
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT} =)`)
-});
+//делается асинковая функция только лишь для того, чтобы обернуть все в await, чтобы 
+//проще работалось с промисами
+
+async function startServer(){
+    try{
+        await mongoose.connect(url, {
+            useNewUrlParser: true
+        });
+
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT} =)`)
+        });
+    }catch(err){
+        console.error('-err', err)
+    };
+};
+
+startServer();
+
