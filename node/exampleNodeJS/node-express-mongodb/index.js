@@ -36,9 +36,14 @@ const PORT = process.env.PORT || 3000;
 
 const user = 'Admin';
 // const password = 'p4pdesz2vd3tb9tL';
-const url = 'mongodb+srv://Admin:<p4pdesz2vd3tb9tL>@cluster0-gk8xa.mongodb.net/test?retryWrites=true&w=majority'
 
 
+
+const user1 = 'paul_admin'
+const psw = 'UcMIa2iY3I09WhQg';
+const url = 'mongodb+srv://paul_admin:UcMIa2iY3I09WhQg@cluster0-gk8xa.mongodb.net/shop'
+
+// UcMIa2iY3I09WhQg
 //делается асинковая функция только лишь для того, чтобы обернуть все в await, чтобы 
 //проще работалось с промисами
 

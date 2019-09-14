@@ -1,98 +1,15 @@
-const uuid = require('uuid/v4')
-const fs = require('fs');
-const path = require('path');
+const {Schema, model} = require('mongoose');
 
-//модель
-class Course {
-    constructor(title, price, img){
-        this.title = title;
-        this.price = price;
-        this.img = img;
-        this.id = uuid();
-    }
+const newShema = new Schema({
+    title: {
+        type: String,
+        required: true //поле говорит об обязательном наличии
+    },
+    price: {
+        type: Number,
+        required: true,
+    },
+    img: String
+});
 
-    toJSON() {
-        
-        return {
-            id: this.id,
-            title: this.title,
-            price: this.price,
-            img: this.img
-        }
-    }
-
-    async save(){
-        const courses = await Course.getAll() //
-
-        courses.push(this.toJSON());
-        console.log('--courses', courses)
-
-        return new Promise((resolve, reject) => {
-            fs.writeFile(
-                path.join(__dirname, '..', 'data', 'courses.json'),
-                JSON.stringify(courses),
-                (err, content) => {
-                    if(err){
-                        reject(err)
-                    }else{
-                        resolve()
-                    };
-                }
-            )
-        })
-    };
-
-    static getAll(){
-
-
-        //весь асихронный запрос обертываем в промис
-        return new Promise((resolve, reject) => {
-
-
-            fs.readFile( //считываем данные с файла
-                path.join(__dirname, '..', 'data', 'courses.json'),
-                'utf-8',
-                (err, content) => {
-                    if(err){
-                        reject(err)
-                    }else{
-                        console.log('content', content)
-                        resolve(JSON.parse(content)) //хдесь получем стоку, поэтому парсим все
-                    };
-                }
-            )
-        })
-    }
-
-    static async getById(id){
-        console.log('ПОЛУЧИЛИ ID', id)
-        const courses = await Course.getAll();//образение ко всем параметрам курса
-
-        return courses.find(c => c.id === id);
-    };
-
-    static async update(course){
-        console.log('получи', course)
-        const courses = await Course.getAll();//образение ко всем параметрам курса
-
-        const idx = courses.findIndex(c => c.id === course.id);
-
-        courses[idx] = course;
-
-        return new Promise((resolve, reject) => {
-            fs.writeFile(
-                path.join(__dirname, '..', 'data', 'courses.json'),
-                JSON.stringify(courses),
-                (err, content) => {
-                    if(err){
-                        reject(err)
-                    }else{
-                        resolve()
-                    };
-                }
-            )
-        })
-    }
-};
-
-module.exports = Course;
+module.exports = model('Course', newShema) //первый параметр название модели
