@@ -33,6 +33,11 @@ app.use('/card', cardRouter);
 
 const PORT = process.env.PORT || 3000;
 
+const user = 'Admin';
+// const password = 'p4pdesz2vd3tb9tL';
+const url = 'mongodb+srv://Admin:<p4pdesz2vd3tb9tL>@cluster0-gk8xa.mongodb.net/test?retryWrites=true&w=majority'
+
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT} =)`)
 });
