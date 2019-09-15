@@ -12,29 +12,6 @@ import PostModel from './models/post';
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-// app.get('/', async (req, res) => {
-//     return res.send(`<h1>Hello</h1>`);
-// });
-
-// app.get('/posts', async (req, res) => {
-//     return res.send(posts);
-// });
-
-// //отображаю на сранице нужный id
-// app.get('/:id', (req, res) => {
-//     const id = req.params.id; //получаю id, который передаем
-    
-//     return res.send([posts[id]]);
-// });
-
-// app.post('/posts', (req, res) => {
-//     const data = req.body;
-//     console.log('--data', data);
-//     posts.push(data);
-
-//     return res.send(posts); //ретурнить обятаельно нужно, чтобы запросы не уходили в бесконечность
-// });
-
 //добавление записей в бд
 app.post('/posts', (req, res) => {
     const data = req.body;
@@ -61,6 +38,35 @@ app.get('/posts', (req, res) => {
 
         res.json(posts);
     })
+});
+
+//удаление записей
+app.delete('/posts/:id', (req, res) => {
+    PostModel.remove({
+        _id: req.params.id
+    }).then(post => {
+        //проверяем, что после ввыполнения звпросов запись была удалена
+        //те запись была возращена
+        if(post){
+            res.json({status: 'deleted'})
+        }else{
+            res.json({status: 'error deleted'})
+        }
+    })
+});
+
+//обновление записей
+app.put('/posts/:id', (req, res) => {
+    PostModel.findByIdAndUpdate(
+        req.params.id, 
+        {$set: req.body},
+        err => {
+            if(err){
+                res.send(err)
+            }
+
+            res.json({status: 'update'})
+        })
 });
 
 const PORT = process.env.PORT || 3000;
