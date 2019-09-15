@@ -6,68 +6,28 @@ const bodyParser = require('body-parser');
 const app = express();
 
 //модели
-import PostModel from './models/post';
+// import PostModel from './models/post';
+
+//контроллеры
+import PostController from './controllers/PostController';
+//напрямую к методам класса обратиться нельщя
+//поэтому создается экземпляр класса  и после этого можно обратиться к методам
+const Post = new PostController();
 
 //парсеры
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-//добавление записей в бд
-app.post('/posts', (req, res) => {
-    const data = req.body;
-    console.log('--data', data);
-
-    // создаем экземпляр модели и указываем тестовые данные
-    const post = new PostModel({
-        title: data.title,
-        text: data.text
-    });
-
-    post.save().then(() => {
-        res.send({status: 200})
-        console.log('Запись сохранена!', data.title, data.text)
-    });
-});
-
 //получение всех записией
-app.get('/posts', (req, res) => {
-    PostModel.find().then((err, posts) => { //find без параметров - получаем все записи
-        if(err){
-            res.send(err)
-        }
-
-        res.json(posts);
-    })
-});
-
+app.get('/posts', Post.index);
+//добавление записей в бд
+app.post('/posts', Post.create);
 //удаление записей
-app.delete('/posts/:id', (req, res) => {
-    PostModel.remove({
-        _id: req.params.id
-    }).then(post => {
-        //проверяем, что после ввыполнения звпросов запись была удалена
-        //те запись была возращена
-        if(post){
-            res.json({status: 'deleted'})
-        }else{
-            res.json({status: 'error deleted'})
-        }
-    })
-});
-
+app.delete('/posts/:id', Post.delete);
 //обновление записей
-app.put('/posts/:id', (req, res) => {
-    PostModel.findByIdAndUpdate(
-        req.params.id, 
-        {$set: req.body},
-        err => {
-            if(err){
-                res.send(err)
-            }
-
-            res.json({status: 'update'})
-        })
-});
+app.put('/posts/:id', Post.update);
+//получение конкретной записи
+app.get('/posts/:id', Post.read);
 
 const PORT = process.env.PORT || 3000;
 
