@@ -10,6 +10,9 @@ const addRouter = require('./routes/add');
 const coursesRouter = require('./routes/courses');
 const cardRouter = require('./routes/card');
 
+//модели
+const User = require('./modals/user');
+
 //конфигураиця exphbs
 const hbs = exphbs.create({
     defaultLayout: 'main', //файл с папки layout
@@ -32,15 +35,26 @@ app.use('/add',addRouter);
 app.use('/courses',coursesRouter);
 app.use('/card', cardRouter);
 
+app.use(async (req, res, next) => { //называется мидлвеер
+    try{
+        const user = await User.findById('5d7d958e7564b79028b4a267'); //получаем пользователя с бд по id
+        req.user = user;
+        next();
+    }catch(err){
+        console.log('--err', err)
+    }
+});
+
 const PORT = process.env.PORT || 3000;
 
-const user = 'Admin';
+// const user = 'Admin';
 // const password = 'p4pdesz2vd3tb9tL';
 
 
 
-const user1 = 'paul_admin'
-const psw = 'UcMIa2iY3I09WhQg';
+// const user1 = 'paul_admin'
+// const psw = 'UcMIa2iY3I09WhQg';
+// /shop - название бд
 const url = 'mongodb+srv://paul_admin:UcMIa2iY3I09WhQg@cluster0-gk8xa.mongodb.net/shop'
 
 // UcMIa2iY3I09WhQg
@@ -53,6 +67,20 @@ async function startServer(){
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
+
+        //проверка, есть ли пользователь в системе, если нет, то создаем
+        const candidate = await User.findOne(); //обращаюсь в бд к модели User, если там что-то есть, этот метод вернет
+
+        if(!candidate){
+            //базовые параметры юзера
+            const user = new User({
+                email: 'drahunpavel@gmail.com',
+                name: 'Paul',
+                cart: {items: []}
+            })
+
+            await user.save(); //сохранение переменной
+        };
 
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT} YEAH!!!!`)

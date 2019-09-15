@@ -9,7 +9,11 @@ const newShema = new Schema({
         type: Number,
         required: true,
     },
-    img: String
+    img: String,
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User' //строка должна совпадать с названием модели
+    }
 });
 
 module.exports = model('Course', newShema) //первый параметр название модели
