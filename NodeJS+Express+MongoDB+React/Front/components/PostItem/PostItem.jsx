@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './PostItem.scss';
 
@@ -25,17 +25,21 @@ class PostItem extends PureComponent{
         const {
             title, 
             createdAt, 
-            id, 
+            text,
+            _id, 
             onRemove
         } = this.props;
 
         return(
             <div className="post-item">
-                <h2>{title}</h2>
+                <Link to={`/post/${_id}`}>
+                    <h2>{title}</h2>
+                </Link>
+                <p>{text}</p>
                 <p>
                     <i>Posted on {createdAt}</i>
-                    <a>Remove</a>
-                    <a>Edit</a>
+                    <Link to='#' onClick={onRemove}>Remove</Link>
+                    <Link to='/post/${_id}/edit'>Edit</Link>
                 </p>
             </div>
         );
@@ -45,7 +49,7 @@ class PostItem extends PureComponent{
 PostItem.defaultProps = {
     title: 'test title',
     createdAt: null,
-    id: 'id',
+    _id: 'id',
     onRemove: null
 }
 

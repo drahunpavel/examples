@@ -1,10 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './AddForm.scss';
 
 const AddForm = () => {
     return (
         <form className="add-form">
+            <Link to="/">
+                <button className="btn btn-primary">Back</button>
+            </Link>
             <div className="form-group">
                 <div className="add-form__row">
                     <h4>
@@ -27,7 +31,7 @@ const AddForm = () => {
             </div>
             <button type="submit" className="btn btn-primary">
                 Submit
-      </button>
+            </button>
         </form>
     );
 };
