@@ -1,14 +1,14 @@
 ﻿import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom';
 
-import HeaderBlock from './components/HeaderBlock/HeaderBlock';
+import App from './router/App';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
-	<Fragment>
-		<HeaderBlock/>
-	</Fragment>
-	,document.getElementById('container') 
+	<div>
+		<App/>
+	</div>,
+	document.getElementById('container')
 );
 

@@ -26,7 +26,7 @@ module.exports = {
     port: 8080,
   },
   entry: {
-		main: ['babel-polyfill', './app.js'] //для работы async / await
+		main: ['babel-polyfill', './index.js'] //для работы async / await
 	},
   output:{ 
     path: __dirname, // путь к каталогу выходных файлов
