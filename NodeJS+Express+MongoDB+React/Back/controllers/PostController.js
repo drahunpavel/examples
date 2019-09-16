@@ -2,6 +2,7 @@ import PostModel from '../models/Post';
 
 class PostController {
   index(req, res) {
+    console.log('--1', res)
     PostModel.find().then((err, posts) => {
       if (err) {
         res.send(err);

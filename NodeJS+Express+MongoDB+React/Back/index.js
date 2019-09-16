@@ -18,7 +18,15 @@ const Post = new PostController();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-//получение всех записией
+
+app.use(function(req, res, next) {
+    // res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    // res.setHeader("Content-Type", "text/html");
+    next();
+  });
+
+//получение всех записей
 app.get('/posts', Post.index);
 //добавление записей в бд
 app.post('/posts', Post.create);
