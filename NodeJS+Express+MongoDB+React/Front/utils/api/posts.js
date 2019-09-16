@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export default {
-    get: axios.get('public/post.json'),
+export const postAPI = {
+    get: async () => axios.get('public/post.json'),
 };
 
 // export default {

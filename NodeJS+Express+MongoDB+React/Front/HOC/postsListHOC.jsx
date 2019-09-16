@@ -1,40 +1,38 @@
 import React, { PureComponent, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import PostsList from '../components/PostsList/PostsList';
-import PostsListActions from '../actions/action';
+import {fetchItems, setItems} from '../actions/acPostList';
 
 class postsListHOC extends PureComponent{
 
     componentDidMount(){
-        console.log('компонент создан')
-        const {fetchItems} = PostsListActions;
+        const {fetchItems} = this.props;
         fetchItems();
     };
 
     render(){
         return(
             <Fragment>
-                <PostsList/>
+                <PostsList 
+                    items={this.props.items}
+                />
             </Fragment>
         );
     };
 };
 
 const mapStateToProps = ({data}) => ({
-    items: data.item ? data.item : null,
+    items: data.items,
 });
-const mapDispatchToProps = PostsListActions;
-// ApplicationForAcceptance.propTypes = {
-//     data: PropTypes.array,
-//     item: PropTypes.object,
-//     meta: PropTypes.object,
-//     updateVisible: PropTypes.bool,
-//     selectedRow: PropTypes.number,
-//     selectedRows: PropTypes.array,
-//     selectedRowsFullinformation: PropTypes.array,
-//     selectRowDebetCredit:PropTypes.object
-// };
+const mapDispatchToProps = {
+    fetchItems,
+    setItems
+};
 
+postsListHOC.propTypes = {
+    items: PropTypes.array,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(postsListHOC);
