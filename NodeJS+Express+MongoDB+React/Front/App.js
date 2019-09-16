@@ -7,6 +7,6 @@ ReactDOM.render(
 	<Fragment>
 		<HeaderBlock/>
 	</Fragment>
-	, document.getElementById('container') 
+	,document.getElementById('container') 
 );
 
