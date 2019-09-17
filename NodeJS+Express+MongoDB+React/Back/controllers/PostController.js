@@ -28,7 +28,6 @@ class PostController {
   }
 
   read(req, res) {
-    console.log('--read===============================================================')
     PostModel.findOne({ url: req.params.id }).then(post => {
       if (!post) {
         res.send({ error: 'not found' });
@@ -50,7 +49,7 @@ class PostController {
 
   delete(req, res) {
     PostModel.remove({
-      _id: req.params.id,
+      url: req.params.id,
     }).then(post => {
       if (post) {
         res.json({ status: 'deleted' });

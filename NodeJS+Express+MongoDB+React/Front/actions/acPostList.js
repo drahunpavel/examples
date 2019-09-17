@@ -53,8 +53,20 @@ export const fetchItems = () => (dispatch) => {
 };
 
 export const fetchItem = (id) => (dispatch) => {
-    console.log('актион получил', id)
     postAPI.getOnly(id).then(({ data }) => {
         dispatch(appendItem(data));
     });
+};
+
+export const removeItem = (id) => ({
+      type: 'POSTS:REMOVE_ITEM',
+      payload: id,
+});
+
+export const fetchRemoveItem = (id) => (dispatch) => {
+    console.log('-----', id)
+      if (global.confirm('Вы действительно хотите удалить статью?')) {
+        dispatch(removeItem(id));
+        postAPI.remove(id);
+      }
 };

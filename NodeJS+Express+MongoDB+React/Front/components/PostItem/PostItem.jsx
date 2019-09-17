@@ -12,9 +12,10 @@ class PostItem extends PureComponent{
             createdAt, 
             text,
             _id, 
-            onRemove
+            onRemove,
+            items_id
         } = this.props;
-
+        console.log(url)
         return(
             <div className="post-item">
                 <Link to={`/post/${url}`}>
@@ -23,7 +24,7 @@ class PostItem extends PureComponent{
                 <p>{text}</p>
                 <p>
                     <i>Posted on {createdAt}</i>
-                    <Link to='#' onClick={onRemove}>Remove</Link>
+                    <Link to='#' onClick={onRemove.bind(this, url)}>Remove</Link>
                     <Link to={`/post/${url}/edit`}>Edit</Link>
                 </p>
             </div>

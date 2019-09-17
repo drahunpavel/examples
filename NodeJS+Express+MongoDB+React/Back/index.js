@@ -39,7 +39,7 @@ app.get('/post/:id', Post.read);
 //добавление записей в бд
 app.post('/posts', Post.create);
 //удаление записей
-app.delete('/posts/:id', Post.delete);
+app.delete('/post/:id', Post.delete);
 //обновление записей
 app.put('/posts/:id', Post.update);
 

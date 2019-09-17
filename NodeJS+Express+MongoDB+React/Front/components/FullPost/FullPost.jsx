@@ -6,20 +6,24 @@ import './FullPost.scss';
 class FullPost extends React.PureComponent{
 
     render(){
-        const {text, title, createdAt, item} = this.props;
+        const {text, title, createdAt, items} = this.props;
         return(
+          !items ? 
+          'Loading ...' 
+          
+          :
             <div className="full-post">
-            <div className="container">
-              <Link to="/">
-                <button className="btn btn-primary">Back</button>
-              </Link>
-              <p>{item ? item.title : title}</p>
-              <div className="full-post__details">
-                <i>Posted on {item ? item.createdAt : createdAt}</i>
+              <div className="container">
+                <Link to="/">
+                  <button className="btn btn-primary">Back</button>
+                </Link>
+                <p>{items.title}</p>
+                <div className="full-post__details">
+                  <i>Posted on {items.createdAt}</i>
+                </div>
+                <br />
+                <p className="full-post__text">{items.text}</p>
               </div>
-              <br />
-              <p className="full-post__text">{item ? item.text : text}</p>
-            </div>
           </div>
         );
     };
