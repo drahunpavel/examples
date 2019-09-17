@@ -17,25 +17,32 @@ const Post = new PostController();
 //парсеры
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
-
-app.use(function(req, res, next) {
-    // res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    // res.setHeader("Content-Type", "text/html");
+app.use(function (req, res, next) {
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    // Pass to next layer of middleware
     next();
-  });
+});
+
 
 //получение всех записей
 app.get('/posts', Post.index);
+//получение конкретной записи
+app.get('/post/:id', Post.read);
 //добавление записей в бд
 app.post('/posts', Post.create);
 //удаление записей
 app.delete('/posts/:id', Post.delete);
 //обновление записей
 app.put('/posts/:id', Post.update);
-//получение конкретной записи
-app.get('/posts/:id', Post.read);
+
 
 const PORT = process.env.PORT || 3000;
 

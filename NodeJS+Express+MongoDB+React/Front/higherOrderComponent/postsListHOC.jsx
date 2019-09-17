@@ -13,6 +13,7 @@ class postsListHOC extends PureComponent{
     };
 
     render(){
+
         return(
             <Fragment>
                 <PostsList 
