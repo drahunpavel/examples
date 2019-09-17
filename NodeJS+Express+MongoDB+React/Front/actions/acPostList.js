@@ -41,8 +41,20 @@ export const setItems = (value) => (dispatch) => {
     });
 };
  
+export const appendItem = (item) => ({
+      type: 'POSTS:APPEND_ITEM',
+      payload: item,
+});
+
 export const fetchItems = () => (dispatch) => {
-    postAPI.get().then(({ data }) => {
+    postAPI.getAll().then(({ data }) => {
         dispatch(setItems(data));
+    });
+};
+
+export const fetchItem = (id) => (dispatch) => {
+    console.log('актион получил', id)
+    postAPI.getOnly(id).then(({ data }) => {
+        dispatch(appendItem(data));
     });
 };

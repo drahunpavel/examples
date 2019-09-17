@@ -6,19 +6,19 @@ import './FullPost.scss';
 class FullPost extends React.PureComponent{
 
     render(){
-        console.log('--', this.props)
-        const {text, createdAt} = this.props;
+        const {text, title, createdAt, item} = this.props;
         return(
             <div className="full-post">
             <div className="container">
               <Link to="/">
                 <button className="btn btn-primary">Back</button>
               </Link>
+              <p>{item ? item.title : title}</p>
               <div className="full-post__details">
-                <i>Posted on {createdAt}</i>
+                <i>Posted on {item ? item.createdAt : createdAt}</i>
               </div>
               <br />
-              <p className="full-post__text">{text}</p>
+              <p className="full-post__text">{item ? item.text : text}</p>
             </div>
           </div>
         );
@@ -26,6 +26,7 @@ class FullPost extends React.PureComponent{
 };
 
 FullPost.defaultProps = {
+    title: 'defaulr title',
     text: 'test text',
     createdAt: 'дата'
 };

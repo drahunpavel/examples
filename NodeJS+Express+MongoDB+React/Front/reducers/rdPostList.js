@@ -1,5 +1,6 @@
 const initialState = {
-    items: null
+    items: null,
+    item: null
 };
 
 export default (state = initialState, action) => {
@@ -10,6 +11,12 @@ export default (state = initialState, action) => {
             return{
                 ...state,
                 items: payload
+            };
+
+        case 'POSTS:APPEND_ITEM':
+            return{
+                ...state,
+                item: payload
             }
 
         default: return state;
