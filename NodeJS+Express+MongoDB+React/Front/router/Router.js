@@ -8,7 +8,7 @@ import AddForm from '../components/AddForm/AddForm';
 import FullPost from '../components/FullPost/FullPost';
 import NotFound from '../components/NotFound/NotFound';
 
-import postsListHOC from '../HOC/postsListHOC';
+import postsListHOC from '../higherOrderComponent/postsListHOC';
 
 const AppRouter = () => {
 	return(
