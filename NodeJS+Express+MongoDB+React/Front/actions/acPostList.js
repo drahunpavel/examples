@@ -64,7 +64,6 @@ export const removeItem = (id) => ({
 });
 
 export const fetchRemoveItem = (id) => (dispatch) => {
-    console.log('-----', id)
       if (global.confirm('Вы действительно хотите удалить статью?')) {
         dispatch(removeItem(id));
         postAPI.remove(id);

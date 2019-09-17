@@ -37,11 +37,11 @@ app.get('/posts', Post.index);
 //получение конкретной записи
 app.get('/post/:id', Post.read);
 //добавление записей в бд
-app.post('/posts', Post.create);
+app.post('/post', Post.create);
 //удаление записей
 app.delete('/post/:id', Post.delete);
 //обновление записей
-app.put('/posts/:id', Post.update);
+app.put('/post/:id', Post.update);
 
 
 const PORT = process.env.PORT || 3000;

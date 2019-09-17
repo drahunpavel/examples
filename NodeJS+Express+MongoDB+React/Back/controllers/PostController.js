@@ -20,6 +20,7 @@ class PostController {
       title: data.title,
       text: data.text,
       imageUrl: data.imageUrl,
+      url: data.url
     });
 
     post.save().then(() => {
@@ -38,6 +39,7 @@ class PostController {
   }
 
   update(req, res) {
+    console.log('==========================', req.params.id)
     PostModel.findByIdAndUpdate(req.params.id, { $set: req.body }, err => {
       if (err) {
         res.send(err);
