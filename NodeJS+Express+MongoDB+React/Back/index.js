@@ -35,13 +35,13 @@ app.use(function (req, res, next) {
 //получение всех записей
 app.get('/posts', Post.index);
 //получение конкретной записи
-app.get('/post/:id', Post.read);
+app.get('/posts/:id', Post.read);
 //добавление записей в бд
-app.post('/post', Post.create);
+app.post('/posts', Post.create);
 //удаление записей
-app.delete('/post/:id', Post.delete);
+app.delete('/posts/:id', Post.delete);
 //обновление записей
-app.put('/post/:id', Post.update);
+app.put('/posts/:id', Post.update);
 
 
 const PORT = process.env.PORT || 3000;

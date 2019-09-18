@@ -20,7 +20,6 @@ class PostController {
       title: data.title,
       text: data.text,
       imageUrl: data.imageUrl,
-      url: data.url
     });
 
     post.save().then(() => {
@@ -29,7 +28,7 @@ class PostController {
   }
 
   read(req, res) {
-    PostModel.findOne({ url: req.params.id }).then(post => {
+    PostModel.findOne({ _id: req.params.id }).then(post => {
       if (!post) {
         res.send({ error: 'not found' });
       } else {
@@ -39,7 +38,8 @@ class PostController {
   }
 
   update(req, res) {
-    console.log('==========================', req.params.id)
+    console.log('===============================================', req.params.id, req)
+
     PostModel.findByIdAndUpdate(req.params.id, { $set: req.body }, err => {
       if (err) {
         res.send(err);
@@ -51,7 +51,7 @@ class PostController {
 
   delete(req, res) {
     PostModel.remove({
-      url: req.params.id,
+      _id: req.params.id,
     }).then(post => {
       if (post) {
         res.json({ status: 'deleted' });
