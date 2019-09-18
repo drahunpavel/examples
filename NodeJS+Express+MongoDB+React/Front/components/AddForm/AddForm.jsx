@@ -18,6 +18,12 @@ const AddForm = () => {
                 </div>
                 <div className="add-form__row">
                     <h4>
+                        <label htmlFor="url">Unic url</label>
+                    </h4>
+                    <input type="text" className="form-control" id="url" placeholder="Unic url" />
+                </div>
+                <div className="add-form__row">
+                    <h4>
                         <label htmlFor="image">Image URL</label>
                     </h4>
                     <input type="text" className="form-control" id="image" placeholder="Enter image URL" />

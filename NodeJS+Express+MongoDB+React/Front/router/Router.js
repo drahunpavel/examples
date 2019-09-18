@@ -9,6 +9,7 @@ import FullPost from '../components/FullPost/FullPost';
 import NotFound from '../components/NotFound/NotFound';
 
 import postsListHOC from '../higherOrderComponent/postsListHOC';
+import postHOC from '../higherOrderComponent/postHOC';
 
 const AppRouter = () => {
 	return(
@@ -18,7 +19,7 @@ const AppRouter = () => {
                 <div className="content">
                     <Switch>
                         <Route exact path="/" component={postsListHOC} />
-                        <Route path="/post/:id" exact component={FullPost} />
+                        <Route path="/post/:id" exact component={postHOC} />
                         <Route path="/post/:id/edit" exact component={AddForm} />
                         <Route path='*' component={NotFound} />   
                     </Switch>

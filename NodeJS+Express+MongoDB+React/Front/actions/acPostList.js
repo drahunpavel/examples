@@ -41,8 +41,31 @@ export const setItems = (value) => (dispatch) => {
     });
 };
  
+export const appendItem = (item) => ({
+      type: 'POSTS:APPEND_ITEM',
+      payload: item,
+});
+
 export const fetchItems = () => (dispatch) => {
-    postAPI.get().then(({ data }) => {
+    postAPI.getAll().then(({ data }) => {
         dispatch(setItems(data));
     });
+};
+
+export const fetchItem = (id) => (dispatch) => {
+    postAPI.getOnly(id).then(({ data }) => {
+        dispatch(appendItem(data));
+    });
+};
+
+export const removeItem = (id) => ({
+      type: 'POSTS:REMOVE_ITEM',
+      payload: id,
+});
+
+export const fetchRemoveItem = (id) => (dispatch) => {
+      if (global.confirm('Вы действительно хотите удалить статью?')) {
+        dispatch(removeItem(id));
+        postAPI.remove(id);
+      }
 };

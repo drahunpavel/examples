@@ -1,8 +1,9 @@
 import PostModel from '../models/Post';
 
 class PostController {
-  index(req, res) {
-    console.log('--1', res)
+
+
+  async index(req, res) {
     PostModel.find().then((err, posts) => {
       if (err) {
         res.send(err);
@@ -19,6 +20,7 @@ class PostController {
       title: data.title,
       text: data.text,
       imageUrl: data.imageUrl,
+      url: data.url
     });
 
     post.save().then(() => {
@@ -27,7 +29,7 @@ class PostController {
   }
 
   read(req, res) {
-    PostModel.findOne({ _id: req.params.id }).then(post => {
+    PostModel.findOne({ url: req.params.id }).then(post => {
       if (!post) {
         res.send({ error: 'not found' });
       } else {
@@ -37,6 +39,7 @@ class PostController {
   }
 
   update(req, res) {
+    console.log('==========================', req.params.id)
     PostModel.findByIdAndUpdate(req.params.id, { $set: req.body }, err => {
       if (err) {
         res.send(err);
@@ -48,7 +51,7 @@ class PostController {
 
   delete(req, res) {
     PostModel.remove({
-      _id: req.params.id,
+      url: req.params.id,
     }).then(post => {
       if (post) {
         res.json({ status: 'deleted' });
