@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 
 // import HeaderBlock from '../components/HeaderBlock/HeaderBlock';
 // import PostsList from '../components/PostsList/PostsList';
-// import AddForm from '../components/AddForm/AddForm';
+import AddForm from '../components/AddForm/AddForm';
 // import FullPost from '../components/FullPost/FullPost';
 import NotFound from '../components/NotFound/NotFound';
 
@@ -20,7 +20,7 @@ const AppRouter = () => {
                     <Switch>
                         <Route exact path="/" component={postsListHOC} />
                         <Route path="/posts/:id" exact component={postHOC} />
-                        {/* <Route path="/post/:id" exact component={AddForm} /> */}
+                        <Route path="/posts/:id/edit" exact component={AddForm} />
                         <Route path='*' component={NotFound} />   
                     </Switch>
                 </div>

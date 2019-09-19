@@ -41,7 +41,7 @@ app.post('/posts', Post.create);
 //удаление записей
 app.delete('/posts/:id', Post.delete);
 //обновление записей
-app.put('/posts/:id', Post.update);
+app.put('/posts/:id/edit', Post.update);
 
 
 const PORT = process.env.PORT || 3000;

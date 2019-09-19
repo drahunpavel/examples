@@ -28,7 +28,8 @@ class PostItem extends PureComponent{
                     <Link to='#' onClick={onRemove.bind(this, _id)}>Remove</Link>
                 </p>
                 <p>
-                    <Link to={`/posts/${_id}`}>Edit</Link>
+                    <Link to={`/posts/${_id}/edit`}>Edit</Link>
+                    {/* /posts/:id/edit */}
                 </p>
             </div>
         );
