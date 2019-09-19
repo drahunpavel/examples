@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
-
 import './PostItem.scss';
 
 class PostItem extends PureComponent{
