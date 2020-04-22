@@ -1,6 +1,11 @@
 .container{
     display: grid;
+    grid-template-columns: 40px 50px 50px 80px;
+    grid-template-rows: 25% 100px auto;
 }
+
+/* grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line]; */
 
 .container .item{
     width: 100px;
@@ -8,4 +13,24 @@
     background: rgb(194, 164, 164);
     padding: 5px;
     margin: 5px;
+    border: 1px solid black;
 }
+
+/* Единица fr позволяет вам настраивать размер треков как часть свободного пространства в контейнере. */
+.container1{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: rgb(194, 164, 164);
+}
+
+
+/* grid-template-areas */
+/* Определяет шаблон сетки ссылаясь на имена областей, которые заданы с помощью свойства grid-area. */
+.container2 {
+    grid-template-columns: 50px 50px 50px 50px;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "header header header header"
+      "main main . sidebar"
+      "footer footer footer footer";
+  }
