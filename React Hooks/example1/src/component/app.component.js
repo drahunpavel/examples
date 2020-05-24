@@ -1,15 +1,16 @@
 import React, { useState, useCallback } from "react";
 import s from "./app.component.css";
 
-function MyComponent() {
-  const [name, setState] = useState("anshul GoYAL");
-  const handleCahnge = useCallback(e => setState(e.target.value));
+export default function MyComponent() {
+
+  const [count, setCount] = useState(0);
+
   return (
     <>
-      <div className={s.intro}>{name}</div>
-      <input value={name} onChange={handleCahnge} />
+      <p>You Clicked {count} раз</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
     </>
-  );
+  )
 }
-
-export default MyComponent;
