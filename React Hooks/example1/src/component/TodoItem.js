@@ -3,26 +3,34 @@ import { StylesProvider } from '@material-ui/core/styles';
 // import { ThemeProvider, useTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
+import { withStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        color: 'red'
+
+const styles = {
+    todo: {
+        marginBottom: '1rem',
+
+        completed: {
+            span: {
+                textDecoration: 'line-through',
+                color: 'blue'
+            }
+        }
     },
-  }));
+  };
 
-export default function TodoItem({ title, id, completed }) {
 
-    const classes = useStyles();
-    console.log('--classes', classes)
+function TodoItem({ title, id, completed, classes}) {
+
     return (
-        <StylesProvider>
-            <li className="todo">
+
+        <li className={classes.todo}>
                 <label>
                     <input
                         type="checkbox"
                         defaultChecked={false}
                     />
-                    <span className={classes.root}>{title}</span>
+                    <span >{title}</span>
 
                     <i
                         className="material-icons red-text"
@@ -31,7 +39,8 @@ export default function TodoItem({ title, id, completed }) {
                     </i>
                 </label>
             </li>
-        </StylesProvider>
 
     )
 }
+
+export default withStyles(styles)(TodoItem);

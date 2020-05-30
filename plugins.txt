@@ -1,0 +1,29 @@
+Git history
+GitLens
+Todo+
+npm Intellisense
+Auto Import
+Better Comments
+Bracket Pair Colorizer 2
+CSS Peek
+HTML Snippets
+JavaScript (ES6) code snippets
+Material Icon Theme
+npm Intellisense
+Regex Previewer
+SVG Viewer
+
+quokka.js
+gitLens
+version Lens - следид за зависимостями в package.json
+import cost - вес зависимостей
+babel JavaScript - подсветка кода
+todo highlight
+indenr-rainbow - подсветка отступов 
+bracket pair colorizer - перекрашивать парные скобки
+prettier - автоматически отсупы делает (format on save check)
+javascript code snippets - буквенные сокращения
+ES7 - сокращенные сниппеты для реакта
+Auto rename tag
+lorem ipsum - заглушка
+liveserver
