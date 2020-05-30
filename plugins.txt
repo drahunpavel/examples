@@ -13,17 +13,17 @@ npm Intellisense
 Regex Previewer
 SVG Viewer
 
-quokka.js
-gitLens
-version Lens - следид за зависимостями в package.json
-import cost - вес зависимостей
-babel JavaScript - подсветка кода
-todo highlight
-indenr-rainbow - подсветка отступов 
-bracket pair colorizer - перекрашивать парные скобки
-prettier - автоматически отсупы делает (format on save check)
-javascript code snippets - буквенные сокращения
-ES7 - сокращенные сниппеты для реакта
-Auto rename tag
+Quokka
+Git Lens
+Version Lens - следид за зависимостями в package.json
+Import Cost - вес зависимостей
+Babel JavaScript - подсветка кода
+TODO Highlight
+Indent Rainbow - подсветка отступов 
+Bracket Pair Colorizer - перекрашивать парные скобки
+Prittier - автоматически отсупы делает (format on save check)
+JavaScript Code Snippets - буквенные сокращения
+ES7 React/Redux/GraphQL/React-Native Snippets - сокращенные сниппеты для реакта
+Auto Rename Tag
 lorem ipsum - заглушка
 liveserver
