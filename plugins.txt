@@ -27,3 +27,5 @@ ES7 React/Redux/GraphQL/React-Native Snippets - сокращенные снип�
 Auto Rename Tag
 lorem ipsum - заглушка
 liveserver
+
+SCSS IntelliSense
