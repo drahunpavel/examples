@@ -10,7 +10,9 @@ import { Loader } from "../components/Loader";
 
 export const Home = () => {
   //компонент Home может пользоваться FirebaseContext
-  const { loading, notes, fetchNotes } = useContext(FirebaseContext);
+  const { loading, notes, fetchNotes, removeNote } = useContext(
+    FirebaseContext
+  );
 
   useEffect(() => {
     fetchNotes();
@@ -21,7 +23,7 @@ export const Home = () => {
       <Form />
       <hr />
 
-      {loading ? <Loader /> : <Notes notes={notes} />}
+      {loading ? <Loader /> : <Notes notes={notes} onRemove={removeNote} />}
     </Fragment>
   );
 };
