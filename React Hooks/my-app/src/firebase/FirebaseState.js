@@ -5,7 +5,12 @@ import React, { useReducer } from "react";
 import { FirebaseContext } from "./firebaseContext";
 import { firebaseReducer } from "./firebaseReducer";
 import axios from "axios";
-import { SHOW_LOADER, REMOVE_NOTE } from "../context/types";
+import {
+  SHOW_LOADER,
+  REMOVE_NOTE,
+  ADD_NOTE,
+  FETCH_NOTES,
+} from "../context/types";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -23,18 +28,42 @@ export const FirebaseState = ({ children }) => {
     showLoader();
     const res = await axios.get(`${url}/notes.json`); //notes.json запись для дб
 
-    console.log("--fetchNotes", res.data);
+    //трансформация объекта в массив
+    const payload = Object.keys(res.data).map((key) => {
+      return {
+        ...res.data[key],
+        id: key,
+      };
+    });
+
+    dispatch({
+      type: FETCH_NOTES,
+      payload,
+    });
   };
 
   const addNote = async (title) => {
-    const note = {
-      title,
-      data: new Date().toJSON(),
-    };
+    try {
+      const note = {
+        title,
+        data: new Date().toJSON(),
+      };
 
-    const res = await axios.post(`${url}/notes.json`, note);
+      const res = await axios.post(`${url}/notes.json`, note);
 
-    console.log("--addNote", res.data);
+      //к новой заметке добавляем ID, которая присвоила база данных
+      const payload = {
+        ...note,
+        id: res.data.name,
+      };
+
+      dispatch({
+        type: ADD_NOTE,
+        payload: payload,
+      });
+    } catch (e) {
+      throw new Error(e.message); //так можно искусственно проверить, что запрос не прошел
+    }
   };
 
   const removeNote = async (id) => {
