@@ -1,24 +1,27 @@
 import React, { Fragment } from "react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export const Notes = ({ notes, onRemove }) => (
-  <ul className="list-group">
+  <TransitionGroup component="ul" className="list-group">
     {notes.map((note) => (
-      <li key={note.id} className="list-group-item note">
-        <div>
-          <strong>{note.title}</strong>
-          <small>{note.data}</small>
-        </div>
+      <CSSTransition key={note.id} classNames={"note"} timeout={800}>
+        <li className="list-group-item note">
+          <div>
+            <strong>{note.title}</strong>
+            <small>{note.data}</small>
+          </div>
 
-        <button
-          type="button"
-          className="btn btn-danger btn-sm"
-          onClick={() => onRemove(note.id)}
-        >
-          &times;
-        </button>
-      </li>
+          <button
+            type="button"
+            className="btn btn-danger btn-sm"
+            onClick={() => onRemove(note.id)}
+          >
+            &times;
+          </button>
+        </li>
+      </CSSTransition>
     ))}
-  </ul>
+  </TransitionGroup>
 );
 
 //можно избавиться от return, означает, что компонент полноситью функционалный
