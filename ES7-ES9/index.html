@@ -1,0 +1,119 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <script>
+        //-------------------------object methods
+        const user = {
+          firstName: 'Paul',
+          lastName: 'Drahun'
+        }
+        console.log('--Object.entries(user):', Object.entries(user)) //[Array(2), Array(2)]
+
+        const name = ['P', 'a', 'u', 'l']
+        console.log('--Object.entries(user):', Object.entries(name)) // 0: (2) [["0", "P"], 1: (2) ["1", "a"]]
+
+        const arr = [['one', 1], ['two', 2], ['three', 3] ]
+        console.log('--Object.fromEntries', Object.fromEntries(arr)) //{one: 1, two: 2, three: 3}
+
+        console.log('--Object.values', Object.values(user)) //["Paul", "Drahun"]
+
+
+        //-----------------------Object.getOwnPropertyDescriptors()
+        const person = {
+          name: 'Paul',
+          age: 26,
+          set personName(name){
+            this.name = name;
+          },
+          get password(){
+            return `${this.name}${this.age}`
+          }
+        }
+        console.log('--', person)
+        console.log('--', person.password)
+        console.log('--getOwnPropertyDescriptors', Object.getOwnPropertyDescriptors(person))
+
+        //поверхностное клонировение объекта
+        const person1 = Object.assign({}, person)
+        const person2 = {...person}
+        console.log('--person1', person1)
+        console.log('--person2', person2)
+
+        //глубокое копирование объекта
+        const superPerson = Object.defineProperties({}, Object.getOwnPropertyDescriptors(person))
+        console.log('--superPerson', superPerson)
+
+
+        //-----------------------синтактический сахар
+        console.log('--возведение в степень', Math.pow(7, 2))
+        console.log('--возведение в степень', 7**2)
+
+
+        //-----------------------async functions
+        //try-catch - catcch без аргумента
+        //метод finally - метод для завершения, без исключений
+
+
+
+        //-----------------------array methods
+        //includes - проверка на наличие элемента в массиве
+        //работает с NaN
+        const arrInc = [1,2,3,4, 'five', NaN]
+
+        if(arrInc.indexOf(3) >= 0){
+          console.log(true)
+        }
+
+        if(arrInc.includes(3)){
+          console.log(true)
+        }
+
+        //flat - возвращает новый массив, в котором все подмассивы вошли в основной массив
+        //многомерные массивы
+        const arr1 = [1,2,[3,4]]
+        const arr2 = [1,2,[3,4, [5,6]]]
+        console.log('--arr1.flat()', arr1.flat())
+        console.log('--arr2.flat(1)', arr2.flat(1))
+        console.log('--arr2.flat(Infinity)', arr2.flat(Infinity))
+        //удаляет мустые элементы массива (разряженные массивы)
+
+        //flatMap - сначала применяет функцию ко всем эллементам массива, а после возращает новый
+        const arr7 = [[1], [2], [3], [4]]
+        console.log('--arr7.flatMap', arr7.flatMap( x => [x*2]))
+
+
+
+        //-----------------------async iterators
+        const names = ['Jack', 'Max', 'Leo'];
+
+        for(let name of names){
+          console.log('--for-of', name)
+        }
+        //for-await-of
+        //ассинхронные генераторы??
+
+
+
+        //-----------------------string methods
+        const str = 'test';
+        
+        console.log('--str.padStart', str.padStart(10, '¬')) //дополняет строку до нужного размера
+        console.log('--str.padEnd', str.padEnd(10, '¬')) //дополняет строку до нужного размера
+        console.log('--str.padStart', str.padStart(10))
+
+        //str.startsWith('red')
+        //str.endsWith('red')
+        //str.startsWith('red', 7) - обрезает строку от 1го до 7го символа, поиск в этом промежутке
+
+        //str.trimStart()
+        //str.trimEnd()
+
+
+
+        //-----------------------RegExp
+
+
+        //https://github.com/YauhenKavalchuk/es7-es9-features
+    </script>
+</html>
