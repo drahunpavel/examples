@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         test Script
-// @namespace       https://github.com/MyRequiem/comfortablePlayingInGW
+// @namespace    https://github.com/drahunpavel
 // @version      1
 // @description  try to take over the world!
 // @author       You
