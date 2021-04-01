@@ -17,5 +17,5 @@
 (function () {
     'use strict';
 
-    console.log('UPD', window.location)
+    console.log('test', window.location)
 })();
