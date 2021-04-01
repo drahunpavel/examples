@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         test Script
 // @namespace    https://github.com/drahunpavel
-// @version      1
+// @version      1.2
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://raw.githubusercontent.com/drahunpavel/examples/master/testfile.js
@@ -17,5 +17,5 @@
 (function () {
     'use strict';
 
-    console.log('Im here', window.location)
+    console.log('Im here + here', window.location)
 })();
