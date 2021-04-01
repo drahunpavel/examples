@@ -9,7 +9,7 @@
 // @match        https://www.gwars.ru/warlog.php*
 // @match        https://www.gwars.ru/warlock.php*
 // @grant        none
-// @updateURL    https://raw.githubusercontent.com/drahunpavel/user-scripts/main/testFile.js?token=AIW6AB7MHX54DRR4LWSEWDTAMZHY2
+// @updateURL    https://raw.githubusercontent.com/drahunpavel/examples/master/testfile.js
 // ==/UserScript==
 
 (function () {
