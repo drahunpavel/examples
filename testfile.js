@@ -17,5 +17,5 @@
 (function () {
     'use strict';
 
-    console.log('Im here + here', window.location)
+    console.log('UPD', window.location)
 })();
