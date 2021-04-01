@@ -12,6 +12,7 @@
 // @updateURL    https://raw.githubusercontent.com/drahunpavel/examples/master/testfile.js
 // ==/UserScript==
 
+
 (function () {
     'use strict';
 
