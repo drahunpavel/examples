@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         test Script
 // @namespace    https://github.com/drahunpavel
-// @version      1.2.2
+// @version      1.2.3
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/drahunpavel/examples/blob/master/testfile.js
@@ -17,5 +17,6 @@
 (function () {
     'use strict';
 
+    console.log('--еще инфа')
     console.log('test', window.location)
 })();
